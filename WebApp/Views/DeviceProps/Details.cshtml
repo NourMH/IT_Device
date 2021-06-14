@@ -1,0 +1,42 @@
+﻿@model WebApp.Models.DeviceProp
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DeviceProp</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Device.DeviceName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Device.DeviceName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Property.Descraption)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Property.Descraption)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.value)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.value)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

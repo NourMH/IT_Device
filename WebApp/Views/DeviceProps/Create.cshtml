@@ -1,0 +1,107 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+
+<form asp-action="Create" id="mainform" method="POST">
+
+    <div class="form-horizontal">
+        <h4>DeviceProp</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+        </div>
+
+        @for (int i = 0; i < ViewBag.catProp.Count; i++)
+        {
+            @*while(i < Model.Count()){*@
+
+            WebApp.Models.Property p = (ViewBag.catProp)[i];
+
+
+            <div class="form-group">
+
+                @Html.Label(p.Descraption, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input name="D_Id" asp-for="@Model[i].D_Id" value="@ViewBag.deviceId" class="invisible" />
+                    <input name="P_Id" asp-for="@Model[i].P_Id" class="invisible" value="@p.Id" />
+                    <input name="value" asp-for="@Model[i].value" class="form-control" />
+
+                    @*@Html.EditorFor(model => model.value, new { htmlAttributes = new { @class = "form-control" } })*@
+                    @*@Html.ValidationMessageFor(model => model.value, "", new { @class = "text-danger" })*@
+                    @*@{i++;}*@
+                </div>
+            </div>
+        }
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" id="btnSubmit" class="btn btn-default" />
+
+
+
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+
+<script>
+
+        //$(function () {
+        //    $("#btnSubmit").click(function () {
+        //        $.ajax({
+        //            url: "DeviceProps/Create",
+        //            type: "POST",
+        //            data: $("#mainform").serialize(),
+        //            success: function () {
+        //                alert("success");
+        //            },
+        //            error: function (error) {
+        //                alert("fail");
+        //            }
+        //        });
+        //    });
+        //});
+         
+    $(document).ready(function () {
+        $("#btnSubmit").on("click", function () {
+            debugger;
+            var propNum = "test";
+
+            $.ajax({
+                type: "POST",
+                url: "DeviceProps/Create",
+                dataType: 'json',
+                data: {
+                    prop: propNum
+                },
+
+                success: function () {
+                    alert("success");
+                },
+                error: function (error) {
+                    alert("fail");
+                }
+            });
+
+        });
+    });
+   
+
+
+</script>
+
+
+
+
+

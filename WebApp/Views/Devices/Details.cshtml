@@ -1,0 +1,58 @@
+﻿@model WebApp.Models.Device
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+
+<div>
+    <h4>Device @Model.DeviceName</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DeviceName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeviceName)
+        </dd>
+
+
+        <dt>
+            Category
+        </dt>
+
+        <dd>
+            @ViewBag.category.Name
+        </dd>
+        @{int counter = 0;}
+            @foreach (var i in ViewBag.prop)
+            {
+                
+            <dt>
+                @ViewBag.propertiesOfDevice[counter].Descraption
+            </dt>
+
+            <dd>
+                @if (i.value == null)
+                {
+                <span>No data </span>
+                }
+                else
+                {
+                    @i.value
+                }
+
+            </dd>
+                counter++;
+            }
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Delete", "Delete", new { id = Model.Id }, new { @class = "" })|
+    @Html.ActionLink("Back to List", "Index")
+
+</p>
